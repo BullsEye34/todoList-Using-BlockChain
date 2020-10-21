@@ -113,6 +113,19 @@ App={
       // Show the task
       $newTaskTemplate.show()
     }
+  },  
+  createTask: async () => {
+    App.setLoading(true)
+    const content = $('#newTask').val()
+    await App.todoList.createTask(content)
+    window.location.reload()
+  },
+
+  toggleCompleted: async (e) => {
+    App.setLoading(true)
+    const taskId = e.target.name
+    await App.todoList.toggleCompleted(taskId)
+    window.location.reload()
   },
 }
 
